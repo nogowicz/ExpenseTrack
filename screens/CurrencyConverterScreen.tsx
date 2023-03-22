@@ -72,8 +72,8 @@ function CurrencyConverterScreen() {
             setSymbols(symbols);
         }
 
-        // fetchSymbols();
-        // convert(Number(fromValue), fromCurrencyRedux, toCurrencyRedux)
+        fetchSymbols();
+        convert(Number(fromValue), fromCurrencyRedux, toCurrencyRedux)
     }, []);
 
 
