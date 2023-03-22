@@ -38,7 +38,6 @@ function ExpenseRecord({ id, title, amount, date, onDelete }: ExpenseRecordProps
                         <FontAwesome5 name="trash-alt" size={25} color='white' />
                         <Text style={[styles.hiddenItemText]}>Delete</Text>
                     </Animated.View>
-
                 </View >
             </TouchableWithoutFeedback>
         )

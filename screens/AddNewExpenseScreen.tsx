@@ -89,18 +89,6 @@ function AddNewExpenseScreen() {
                     <View style={styles.amountAndDateContainer}>
                         <CustomTextInput
                             value={String(amount)}
-                            // onChangeText={(text) => {
-                            //     let cleanText = String(text).replace(/[^0-9.-]/g, '');
-                            //     const decimalIndex = cleanText.indexOf('.');
-                            //     if (decimalIndex >= 0 && cleanText.length - decimalIndex > 3) {
-                            //         return;
-                            //     }
-                            //     if (cleanText[0] === '-') {
-                            //         cleanText = '-' + cleanText.replace('-', '');
-                            //     }
-                            //     setAmount(cleanText)
-                            // }}
-
                             onChangeText={(text) => {
                                 const cleanText = String(text).replace(/[^0-9.-]/g, '');
                                 if (!/^(-)?(\d+)?(\.\d{0,2})?$/.test(cleanText)) {

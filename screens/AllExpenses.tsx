@@ -69,7 +69,7 @@ function AllExpensesScreen() {
 
                     <View style={styles.recentExpensesContainer}>
                         <SummaryWidget title="All your expenses" amount={String(summaryAmount)} />
-                        <Text style={styles.sectionTitle}>Your recent expenses</Text>
+                        <Text style={styles.sectionTitle}>All expenses</Text>
 
                         <View style={{
                             marginTop: 200,
@@ -107,7 +107,7 @@ function AllExpensesScreen() {
 
                 <View style={styles.recentExpensesContainer}>
                     <SummaryWidget title="All your expenses" amount={String(summaryAmount)} />
-                    <Text style={styles.sectionTitle}>Your recent expenses</Text>
+                    <Text style={styles.sectionTitle}>All expenses</Text>
 
                     <ScrollView>
                         <View>

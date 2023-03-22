@@ -6,12 +6,16 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { Provider as PaperProvider } from 'react-native-paper';
 import RecentExpensesScreen from './screens/RecentExpensesScreen';
 import { Colors } from './constants/Colors';
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons, Octicons } from '@expo/vector-icons'
 import AllExpensesScreen from './screens/AllExpenses';
 import AddNewExpenseScreen from './screens/AddNewExpenseScreen';
 import { useEffect, useState } from 'react';
 import { deleteTable, init } from './util/database';
 import LoadingOverlay from './screens/LoadingOverlay';
+import CurrencyConverterScreen from './screens/CurrencyConverterScreen';
+import SymbolListScreen from './screens/SymbolListScreen';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 
 
@@ -69,6 +73,16 @@ function MyTabs() {
           }}
         />
 
+        <Tab.Screen
+          name="Currency Converter"
+          component={CurrencyConverterScreen}
+          options={{
+            tabBarIcon: ({ color }) => (<Octicons name="arrow-switch" size={24} color={color} />),
+            // @ts-ignore
+            tabBarLabel: <Text style={{ color: Colors.text }}>Currency Converter</Text>
+          }}
+        />
+
       </Tab.Navigator>
     </PaperProvider>
   );
@@ -94,7 +108,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <StatusBar style='light' />
       <NavigationContainer>
         <Stack.Navigator>
@@ -113,9 +127,19 @@ export default function App() {
               headerShown: false,
             }}
           />
+
+          <Stack.Screen
+            name="SymbolListScreen"
+            component={SymbolListScreen}
+            options={{
+              headerShown: false,
+              presentation: 'modal'
+            }}
+          />
+
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 }
 
