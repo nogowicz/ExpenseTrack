@@ -16,6 +16,7 @@ import CurrencyConverterScreen from './screens/CurrencyConverterScreen';
 import SymbolListScreen from './screens/SymbolListScreen';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import EditExpenseScreen from './screens/EditExpenseScreen';
 
 
 
@@ -123,6 +124,14 @@ export default function App() {
           <Stack.Screen
             name="AddNewExpenseScreen"
             component={AddNewExpenseScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="EditExpenseScreen"
+            component={EditExpenseScreen}
             options={{
               headerShown: false,
             }}

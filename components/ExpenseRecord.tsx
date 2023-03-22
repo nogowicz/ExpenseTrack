@@ -2,6 +2,8 @@ import { View, StyleSheet, Text, Pressable, TouchableWithoutFeedback, Animated, 
 import { Colors } from "../constants/Colors";
 import { FontAwesome5 } from '@expo/vector-icons'
 import { GestureHandlerRootView, Swipeable } from "react-native-gesture-handler";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
 
 type ExpenseRecordProps = {
@@ -13,8 +15,8 @@ type ExpenseRecordProps = {
 }
 
 function ExpenseRecord({ id, title, amount, date, onDelete }: ExpenseRecordProps) {
+    const navigation = useNavigation<NativeStackNavigationProp<any>>();
     const dateAsDate = new Date(date)
-
     const RenderRight = (progress: any, dragX: any) => {
         const scale = dragX.interpolate({
             inputRange: [-180, 0.5],
@@ -61,6 +63,15 @@ function ExpenseRecord({ id, title, amount, date, onDelete }: ExpenseRecordProps
                         },
 
                     ]}
+
+                    onPress={() => {
+                        navigation.navigate('EditExpenseScreen', {
+                            idFromComponent: id,
+                            titleFromComponent: title,
+                            dateFromComponent: date,
+                            amountFromComponent: amount
+                        })
+                    }}
                 >
                     <View style={styles.container}>
                         <View>
@@ -70,8 +81,9 @@ function ExpenseRecord({ id, title, amount, date, onDelete }: ExpenseRecordProps
                         <Text
                             style={[
                                 styles.amountStyle,
-                                amount.includes('-') ? { color: Colors.expenseTextColor } : { color: Colors.incomeTextColor }
-                            ]}>${parseFloat(amount).toFixed(2)}</Text>
+                                amount.includes('-') ? { color: Colors.incomeTextColor } : { color: Colors.expenseTextColor }
+                            ]}>{amount.includes('-') ? `-$${parseFloat(amount.replace('-', "")).toFixed(2)}` :
+                                `$${parseFloat(amount).toFixed(2)}`}</Text>
                     </View>
                 </Pressable>
             </Swipeable>

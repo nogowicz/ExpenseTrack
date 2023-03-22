@@ -11,7 +11,8 @@ function SummaryWidget({ title, amount }: SummaryWidgetProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.titleStyle}>{title}</Text>
-            <Text style={styles.amountStyle}>${parseFloat(amount).toFixed(2)}</Text>
+            <Text style={styles.amountStyle}>{amount.includes('-') ? `-$${parseFloat(amount.replace('-', "")).toFixed(2)}` :
+                `$${parseFloat(amount).toFixed(2)}`}</Text>
         </View>
     )
 }
